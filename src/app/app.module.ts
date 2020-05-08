@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { AdminSignupFormComponent } from './Forms/Admin/admin-signup-form/admin-signup-form.component';
 import { AdminLonginFormComponent } from './Forms/Admin/admin-longin-form/admin-longin-form.component';
 import { UserListComponent } from './User/user-list/user-list.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -27,6 +29,8 @@ import { UserListComponent } from './User/user-list/user-list.component';
     AdminSignupFormComponent,
     AdminLonginFormComponent,
     UserListComponent,
+    ProductListComponent,
+    ProductDetailComponent,
 
 
   ],

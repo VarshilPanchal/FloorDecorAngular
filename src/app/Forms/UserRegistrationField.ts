@@ -16,3 +16,10 @@ export class Admin {
     email:string;
     password:string;
 }
+
+export class Product{
+    id:number;
+    name: string;
+    image:string;
+    prize:number;
+}
