@@ -1,19 +1,11 @@
 <div class="container">
     <div class="myCss ">
         <div class="row my1">
-            <div class="col-sm-3 card my2 " style="width:400px" *ngFor="let product of products">
-
-            <img class="card-img-top" src="../../../assets/bg.jpg" alt="Card image">
-                <div class="card-body">
-                    <h4 class="card-title">{{product.id}}</h4>
-                    <p class="card-text">{{product.name}}</p>
-                    <p class="card-text">{{product.image}}</p>
-                    <p class="card-text">{{product.prize}}</p>
-                    <button class="btn btn-primary"> Buy </button>
-                </div>
+            <div class="col-md-12 ">
+                <app-product-item *ngFor="let productElement of products; let indexof=index" [product]="productElement"
+                    [index]="indexof+1"></app-product-item>
             </div>
-
-
+            <!-- (productSelected)="onProductSelected(productElement)" -->
         </div>
     </div>
 </div>

@@ -10,9 +10,9 @@
 
 @import url('https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css');
 
-section {
+/* section {
     padding: 10px 0;
-}
+} */
 
 /* 
 section .section-title {
@@ -23,7 +23,7 @@ section .section-title {
 } */
 #footer {
     background : linear-gradient(rgba(27, 25, 25, 0.62), rgba(3, 0, 0, 0.88)), url(/assets/footer-image.jpg) !important;
-    margin-top : 50%;
+    /* margin-top : 50%; */
     position   : absolute;
     bottom     : 0;
     width      : 100%;

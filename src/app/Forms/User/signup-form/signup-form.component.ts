@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, NgForm, Validators } from '@angular/forms';
-import { User } from '../../UserRegistrationField';
+import { User } from '../../model/User.model';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpservicesService } from 'src/app/Services/httpservices.service';
 import { Router } from '@angular/router';
@@ -15,6 +15,11 @@ export class SignupFormComponent implements OnInit {
   userregistrationForm: FormGroup;
   submitted: boolean = false;
   registrationfield: User;
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
+
+  // username:'';
 
   constructor(
     private userRegistrationServices: HttpservicesService,
@@ -24,13 +29,18 @@ export class SignupFormComponent implements OnInit {
     this.userregistrationForm = formbuilder.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      active: [false]
+      // phonenumber: ['', Validators.required],
+
     })
     this.registrationfield = {
       id: null,
       username: '',
       email: '',
       password: '',
+      active: false
+      // phonenumber: null,
       // activeflag: false,
       // orders: 0,
       // approvedOrders: 0,
@@ -45,19 +55,24 @@ export class SignupFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  PostData(userregistrationForm) {
+  signup(userregistrationForm) {
     this.submitted = true
 
     if (this.userregistrationForm.valid) {
       this.registrationfield.username = this.userregistrationForm.get('username').value;
       this.registrationfield.email = this.userregistrationForm.get('email').value;
       this.registrationfield.password = this.userregistrationForm.get('password').value;
-      this.userRegistrationServices.registrationOfUser(this.registrationfield).subscribe(userregistrationForm => {
+      // this.registrationfield.phonenumber = this.userregistrationForm.get('phonenumber').value;
+      this.registrationfield.active = this.userregistrationForm.get('active').value;
+      this.userRegistrationServices.register(this.registrationfield).subscribe(userregistrationForm => {
+        console.log(this.registrationfield.active);
         console.log('register success', userregistrationForm);
-        this.gotoUserList();
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+        this.gotoLoginPage();
       }, error => {
-        console.log(error)
-        console.log(userregistrationForm);
+        this.errorMessage = error.error.message;
+        this.isSignUpFailed = true;
       })
 
     } else {
@@ -68,6 +83,9 @@ export class SignupFormComponent implements OnInit {
   }
   gotoUserList() {
     this.router.navigate(['/userslist']);
+  }
+  gotoLoginPage() {
+    this.router.navigate(['login']);
   }
 
 }

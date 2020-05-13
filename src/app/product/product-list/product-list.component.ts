@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/Forms/UserRegistrationField';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Product } from 'src/app/Forms/model/Product.model';
 import { ProductHttpService } from 'src/app/Services/product-http.service';
 
 @Component({
@@ -8,17 +8,23 @@ import { ProductHttpService } from 'src/app/Services/product-http.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  products : Product[];
+
+  // @Output() productWasSelected = new EventEmitter<Product>();
+  products: Product[];
   constructor(private producthttpService: ProductHttpService) { }
 
   ngOnInit(): void {
     this.getProductList();
   }
 
-  getProductList(){
-    this.producthttpService.findAllUser().subscribe(data => this.products=data );
+  getProductList() {
+    this.producthttpService.findAllProduct().subscribe(data => this.products = data);
   }
 
-  
+  // onProductSelected(product: Product) {
+
+  //   this.productWasSelected.emit(product);
+  // }
+
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/Forms/UserRegistrationField';
+import { User } from 'src/app/Forms/model/User.model';
 import { Router } from '@angular/router';
 import { HttpservicesService } from 'src/app/Services/httpservices.service';
 
@@ -13,7 +13,7 @@ export class UserListComponent implements OnInit {
 
   users: User[];
 
-  constructor(private route: Router, private httpService: HttpservicesService) { }
+  constructor(private router: Router, private httpService: HttpservicesService) { }
 
   ngOnInit(): void {
     this.refreceUserList();
@@ -35,7 +35,17 @@ export class UserListComponent implements OnInit {
   }
 
   updateUser(id){
-    console.log(` user ${id} updated`)
+    console.log(` user ${id} updated`);
+    this.router.navigate(['editprofile',id]);
 
   }
+
+  changeStatus(id){
+    console.log(id)
+  }
+
+  // updateUser(id){
+  //   this.router.navigate(['editprofile',id])
+  //   // this.userHttpservice.updateUser(id,new User).subscribe();
+  // }
 }

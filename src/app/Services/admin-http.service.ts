@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Admin } from '../Forms/UserRegistrationField';
+import { Admin } from '../Forms/model/Admin.model';
 
 @Injectable({
   providedIn: 'root'

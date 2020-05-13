@@ -6,30 +6,49 @@ import { AdminSignupFormComponent } from './Forms/Admin/admin-signup-form/admin-
 import { UserListComponent } from './User/user-list/user-list.component';
 import { LoginFormComponent } from './Forms/User/login-form/login-form.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductComponent } from './product/product.component';
+import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { ProductHomeComponent } from './product/product-home/product-home.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { EditProfileComponent } from './user/user-profile/edit-profile/edit-profile.component';
+import { LogoutComponent } from './forms/user/logout/logout.component';
+import { NewProductComponent } from './forms/product/new-product/new-product.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
 
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   {
-    path: '', component: HomeComponent,
+    path: 'product', component: ProductComponent, children: [
+      
+      { path: '', component: ProductHomeComponent },
+      { path: 'productlist', component: ProductListComponent },
+      { path: 'new', component: NewProductComponent },
+      { path: 'productlist/:id', component: ProductDetailComponent },
+      { path: 'productlist/:id/edit', component: ProductEditComponent }
+      
+    ]
   },
+  { path: 'home', component: HomeComponent, },
+  { path: 'admin/signup', component: AdminSignupFormComponent, },
+  { path: 'login', component: LoginFormComponent, },
+  { path: 'signup', component: SignupFormComponent },
+  { path: 'logout', component: LogoutComponent, },
+  { path: 'userslist', component: UserListComponent },
   {
-    path: 'productlist', component: ProductListComponent,
+    path: 'userprofile', component: UserProfileComponent, children: [
+
+    ]
   },
-  {
-    path: 'home', component: HomeComponent,
-  },
-  {
-    path: 'admin/signup', component: AdminSignupFormComponent,
-  },
-   {
-    path: 'login', component: LoginFormComponent,
-  },
-  {
-    path: 'signup', component: SignupFormComponent
-  },
-  {
-    path: 'userslist', component: UserListComponent
-  }
+  { path: 'editprofile/:id', component: EditProfileComponent, },
+
+  // {
+  //   path: 'productlist', component: ProductListComponent,
+  // },
+  // {
+  //   path: 'productdetail', component: ProductDetailComponent,
+  // },
+
 
 ];
 

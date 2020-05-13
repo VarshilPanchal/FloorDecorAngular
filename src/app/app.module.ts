@@ -14,6 +14,15 @@ import { AdminLonginFormComponent } from './Forms/Admin/admin-longin-form/admin-
 import { UserListComponent } from './User/user-list/user-list.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { ProductItemComponent } from './product/product-list/product-item/product-item.component';
+import { ProductComponent } from './product/product.component';
+import { ProductHomeComponent } from './product/product-home/product-home.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { EditProfileComponent } from './user/user-profile/edit-profile/edit-profile.component';
+import { LogoutComponent } from './forms/user/logout/logout.component';
+import { NewProductComponent } from './forms/product/new-product/new-product.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
+import { AuthInterceptorService } from './services/interceptor/auth-interceptor.service';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -31,6 +40,14 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
     UserListComponent,
     ProductListComponent,
     ProductDetailComponent,
+    ProductItemComponent,
+    ProductComponent,
+    ProductHomeComponent,
+    UserProfileComponent,
+    EditProfileComponent,
+    LogoutComponent,
+    NewProductComponent,
+    ProductEditComponent,
 
 
   ],
@@ -42,7 +59,7 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
     HttpClientModule,
     
   ],
-  providers: [],
+  providers: [AuthInterceptorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

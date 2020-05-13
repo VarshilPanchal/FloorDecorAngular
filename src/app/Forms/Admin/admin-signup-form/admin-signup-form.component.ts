@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormGroup } from '@angular/forms';
-import { Admin } from '../../UserRegistrationField';
+import { Admin } from '../../model/Admin.model';
 import { AdminHttpService } from 'src/app/Services/admin-http.service';
 
 @Component({
