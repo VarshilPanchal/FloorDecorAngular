@@ -1,4 +1,3 @@
-
 <div class="cotainer-fluid bg">
     <div class="row">
         <!-- <div class="col-md-12 "> -->
@@ -22,14 +21,14 @@
                 <br><br><br><br><br><br>
                 <img class="card-img-top col-md-6" [src]="product.image" alt="{{product.name}}">
                 <div class="card-body col-md-6 my2">
-
                     <p class="card-text">{{product.id}}</p>
                     <p class="card-text">{{product.image}}</p>
                     <p class="card-text">{{product.prize}}</p>
                     <!-- <button class="btn btn-primary" (click)="getDetail()"> Buy </button> -->
                 </div>
                 <div class="col-md-12 myCss">
-                    <button class="btn btn-primary btn-tag "> buy at {{product.prize}} </button>
+                    <button class="btn btn-primary btn-tag " (click)="getOrder(product.name)"> buy at {{product.prize}}
+                    </button>
                     <!-- <h5>{{product.prize}}</h5> -->
                 </div>
             </div>

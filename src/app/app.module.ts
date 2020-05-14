@@ -22,7 +22,13 @@ import { EditProfileComponent } from './user/user-profile/edit-profile/edit-prof
 import { LogoutComponent } from './forms/user/logout/logout.component';
 import { NewProductComponent } from './forms/product/new-product/new-product.component';
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
-import { AuthInterceptorService } from './services/interceptor/auth-interceptor.service';
+import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard.component';
+import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
+import { AuthInterceptor, authInterceptorProviders } from './interceptor/auth.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalModule } from 'ngx-bootstrap/modal';
+// NOT RECOMMENDED (Angular 9 doesn't support this kind of import)
+// import { ModalModule } from 'ngx-bootstrap';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -48,6 +54,8 @@ import { AuthInterceptorService } from './services/interceptor/auth-interceptor.
     LogoutComponent,
     NewProductComponent,
     ProductEditComponent,
+    AdminDashboardComponent,
+    UserDashboardComponent,
 
 
   ],
@@ -57,9 +65,11 @@ import { AuthInterceptorService } from './services/interceptor/auth-interceptor.
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ModalModule.forRoot(),
+    BrowserAnimationsModule
     
   ],
-  providers: [AuthInterceptorService],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

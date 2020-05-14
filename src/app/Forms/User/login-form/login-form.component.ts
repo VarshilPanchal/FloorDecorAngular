@@ -4,7 +4,6 @@ import { User } from '../../model/User.model';
 import { HttpservicesService } from 'src/app/Services/httpservices.service';
 import { Router } from '@angular/router';
 import { TokenStorageServiceService } from 'src/app/services/token/token-storage-service.service';
-import { AuthInterceptorService } from 'src/app/services/interceptor/auth-interceptor.service';
 
 
 @Component({
@@ -29,7 +28,7 @@ export class LoginFormComponent implements OnInit {
   checkError: any = false;
   form:any={};
 
-  constructor(private authService: AuthInterceptorService, private tokenStorage: TokenStorageServiceService,private userServices: HttpservicesService, private formbuilder: FormBuilder, private router: Router) {
+  constructor( private tokenStorage: TokenStorageServiceService,private userServices: HttpservicesService, private formbuilder: FormBuilder, private router: Router) {
 
     this.userloginForm = formbuilder.group({
       usernames: [null, Validators.required],
@@ -58,6 +57,7 @@ export class LoginFormComponent implements OnInit {
         console.log(data);
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
+        this.tokenStorage.saveRole(data.roles);
         localStorage.setItem('Username', this.form.username);
 
         this.isLoginFailed = false;

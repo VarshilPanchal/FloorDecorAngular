@@ -34,4 +34,8 @@ export class ProductDetailComponent implements OnInit {
       }
     )
   }
+  getOrder(name){
+    console.log("order place "+ name)
+  }
+  
 }

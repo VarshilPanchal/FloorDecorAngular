@@ -14,27 +14,37 @@ import { EditProfileComponent } from './user/user-profile/edit-profile/edit-prof
 import { LogoutComponent } from './forms/user/logout/logout.component';
 import { NewProductComponent } from './forms/product/new-product/new-product.component';
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
+import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard.component';
+import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'product', component: ProductComponent, children: [
-      
+
       { path: '', component: ProductHomeComponent },
       { path: 'productlist', component: ProductListComponent },
       { path: 'new', component: NewProductComponent },
       { path: 'productlist/:id', component: ProductDetailComponent },
       { path: 'productlist/:id/edit', component: ProductEditComponent }
-      
+
     ]
   },
   { path: 'home', component: HomeComponent, },
-  { path: 'admin/signup', component: AdminSignupFormComponent, },
+  { path: 'admin/dashboard', component: AdminDashboardComponent },
+  { path: 'user/dashboard', component: UserDashboardComponent },
   { path: 'login', component: LoginFormComponent, },
   { path: 'signup', component: SignupFormComponent },
   { path: 'logout', component: LogoutComponent, },
-  { path: 'userslist', component: UserListComponent },
+  {
+    path: 'userslist', component: UserListComponent, children: [
+
+      { path: ':active', component: UserListComponent },
+      { path: ':inactive', component: UserListComponent }
+    ]
+  },
+
   {
     path: 'userprofile', component: UserProfileComponent, children: [
 
