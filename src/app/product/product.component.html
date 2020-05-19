@@ -3,7 +3,7 @@
         <app-product-list></app-product-list>
     </div> -->
     <div class="col-md-12">
-        <div class="col-md-12 myCss">
+        <div class="col-md-12 myCss" *ngIf="this.loginService.isAdminLoggedIn()">
             <button class="btn btn-primary btn-tag " (click)="onNewProduct()"> Add Product </button>
             <!-- <h5>{{product.prize}}</h5> -->
         </div>

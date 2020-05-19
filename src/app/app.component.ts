@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { TokenStorageServiceService } from './services/token/token-storage-service.service';
 
 @Component({
@@ -8,24 +8,12 @@ import { TokenStorageServiceService } from './services/token/token-storage-servi
 })
 export class AppComponent {
   title = 'FloorDecor';
-  private roles: string[];
-  isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
-  username: string;
+  
+  
 
   constructor(private tokenStorageService: TokenStorageServiceService) { }
 
   ngOnInit() {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
-
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      // this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-      this.username = user.username;
-    }
+    
   }
 }

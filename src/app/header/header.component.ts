@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpservicesService } from '../Services/httpservices.service';
+import { HttpservicesService } from '../services/httpservices.service';
 import { TokenStorageServiceService } from '../services/token/token-storage-service.service';
 import { User } from '../Forms/model/User.model';
 
@@ -9,15 +9,19 @@ import { User } from '../Forms/model/User.model';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isLoggedIn=false;
+ 
   user:User[];
 
-  constructor(public userHttpService: HttpservicesService , private tokenStorageService:TokenStorageServiceService) { }
+  constructor(public userHttpService: HttpservicesService , public tokenStorageService:TokenStorageServiceService) { 
+
+   }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
 
   }
 
+  logout(){
+    this.tokenStorageService.signOut();
+  }
   
 }

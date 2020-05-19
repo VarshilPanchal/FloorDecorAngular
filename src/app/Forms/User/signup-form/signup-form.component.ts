@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, NgForm, Validators } from '@angular/forms';
 import { User } from '../../model/User.model';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpservicesService } from 'src/app/Services/httpservices.service';
+import { HttpservicesService } from 'src/app/services/httpservices.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -69,6 +69,7 @@ export class SignupFormComponent implements OnInit {
         console.log('register success', userregistrationForm);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        alert("You have successfully signed up")
         this.gotoLoginPage();
       }, error => {
         this.errorMessage = error.error.message;
@@ -76,11 +77,10 @@ export class SignupFormComponent implements OnInit {
       })
 
     } else {
-      alert('password not match');
+      alert("sign up failed");
     }
-
-
   }
+
   gotoUserList() {
     this.router.navigate(['/userslist']);
   }

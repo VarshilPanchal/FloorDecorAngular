@@ -6,59 +6,55 @@
         </div>
 
         <ul class="navbar-nav ">
-            <li routerLinkActive="active"><a routerLink="/home" class="nav-link">Home</a></li>
-            <li routerLinkActive="active"><a routerLink="" class="nav-link">About us</a></li>
-            <li routerLinkActive="active"><a routerLink="" class="nav-link">Contact Us</a></li>
+            <li routerLinkActive="active"><a routerLink="/home" class="nav-link" *ngIf="this.userHttpService.isUserLoggedIn()">Home</a></li>
+            <li routerLinkActive="active" *ngIf="this.userHttpService.isUserLoggedIn() && this.userHttpService.isAdminLoggedIn()"><a routerLink="userslist"  class="nav-link">User</a></li>
+            <li routerLinkActive="active" *ngIf="this.userHttpService.isUserLoggedIn()"><a routerLink="product/productlist"  class="nav-link">Product</a></li>
+            <li routerLinkActive="active" *ngIf="this.userHttpService.isUserLoggedIn() && this.userHttpService.isAdminLoggedIn()"><a routerLink="orderlist"  class="nav-link">Orders</a></li>
         </ul>
 
-        <ul class="navbar-nav navbar-collapse justify-content-end">
-            <!-- <li routerLinkActive="active"><a routerLink="/signup" class="nav-link" >signup</a></li> -->
-            <!-- <li routerLinkActive="active"><a routerLink="/login" class="nav-link" *ngIf="!this.userHttpService.isUserLoggedIn()">Login</a></li> -->
+        <!-- <ul class="navbar-nav navbar-collapse justify-content-end">
             <li class="nav-item dropdown  font1">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" ><i class="fa fa-dashboard" aria-hidden="true"></i>
                    Dashboard
                 </a>
                 <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item nav-link font1" routerLink="">My Order List</a></li>
-                    <li><a class="dropdown-item nav-link font1" routerLink="">Approved Order  </a></li>
-                    <li><a class="dropdown-item nav-link font1" routerLink="">Rejected Order</a></li>
-                    <li><a class="dropdown-item nav-link font1"  routerLink="">Logout</a></li>
+                    <li><a class="dropdown-item nav-link font1" routerLink="myorder">My Order List</a></li>
+                    <li><a class="dropdown-item nav-link font1" routerLink="approvedorder">Approved Order  </a></li>
+                    <li><a class="dropdown-item nav-link font1" routerLink="rejectedorder">Rejected Order</a></li>
+                    <li><a class="dropdown-item nav-link font1"  routerLink="logout">Logout</a></li>
                 </ul>
             </li>
+        </ul> -->
 
-        </ul>
-
-        <ul class="navbar-nav navbar-collapse justify-content-end">
+        <!-- <ul class="navbar-nav navbar-collapse justify-content-end">
             <li class="nav-item dropdown  font1">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" ><i class="fa fa-dashboard " aria-hidden="true"></i>
+                    aria-haspopup="true" aria-expanded="false" ><i class="fa fa-dashboard " aria-hidden="true" ></i>
                   Admin's Dashboard
                 </a>
                 <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item nav-link font1" routerLink="userlist"  >Total user</a></li>
-                    <li><a class="dropdown-item nav-link font1" routerLink="userlist"  >Active User</a></li>
-                    <li><a class="dropdown-item nav-link font1" routerLink="userlist/inactive">Inactive User</a></li>
-                    <li><a class="dropdown-item nav-link font1" routerLink="">Total Orders</a></li>
+                    <li><a class="dropdown-item nav-link font1" routerLink="userslist"  >Total user</a></li>
+                    <li><a class="dropdown-item nav-link font1" routerLink="userslist"  >Active User</a></li>
+                    <li><a class="dropdown-item nav-link font1" routerLink="userslist">Inactive User</a></li>
+                    <li><a class="dropdown-item nav-link font1" routerLink="orderlist">Total Orders</a></li>
                     <li><a class="dropdown-item nav-link font1"  routerLink="">Chart </a></li>
                 </ul>
             </li>
-
-        </ul>
+        </ul> -->
 
         <ul class="navbar-nav navbar-collapse justify-content-end">
-            <li routerLinkActive="active"><a routerLink="/signup" class="nav-link" *ngIf="!isLoggedIn" >signup</a></li>
-            <li routerLinkActive="active"><a routerLink="/login" class="nav-link" *ngIf="!isLoggedIn" >Login</a></li>
-            <li class="nav-item dropdown  font1">
+            <li routerLinkActive="active"><a routerLink="/signup" class="nav-link" *ngIf="!this.userHttpService.isUserLoggedIn()" >signup</a></li>
+            <li routerLinkActive="active"><a routerLink="/login" class="nav-link" *ngIf="!this.userHttpService.isUserLoggedIn()" >Login</a></li>
+            <li class="nav-item dropdown  font1" *ngIf="this.userHttpService.isUserLoggedIn()">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" ><i class="fa fa-user" aria-hidden="true" *ngIf="isLoggedIn"></i>
+                    aria-haspopup="true" aria-expanded="false" ><i class="fa fa-user" aria-hidden="true" ></i>
                     My Profile
                 </a>
                 <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item nav-link font1" routerLink="/userprofile">My Profile</a></li>
-                    <li><a class="dropdown-item nav-link font1" routerLink="/adminprofile">Admin Profile  </a></li>
-                    <li><a class="dropdown-item nav-link font1" routerLink="MyOrders">My Order</a></li>
-                    <li><a class="dropdown-item nav-link font1"  routerLink="logout">Logout</a></li>
+                    <li><a class="dropdown-item nav-link font1" routerLink="myorder">My Order</a></li>
+                    <li><a class="dropdown-item nav-link font1" (click)="logout()"  routerLink="logout">Logout</a></li>
                 </ul>
             </li>
 
@@ -66,34 +62,3 @@
     </nav>
 
 </header>
-
-<!-- <li class="nav-item dropdown">
-            <button class="btn btn-secondary dropdown-toggle open" type="button" data-toggle="dropdown" aria-haspopup="true" id="dropdown-id"
-                aria-expanded="false">Menu</button>
-            <div class="dropdown-menu" aria-labelledby="dropdown-id">
-                <a class="dropdown-item" [routerLink]='["/"]'>Main page</a>
-                <a class="dropdown-item" [routerLink]='["/about"]'>About</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" [routerLink]='["/about/terms"]'>Terms</a>
-                <a class="dropdown-item" [routerLink]='["/about/privacy"]'>Privacy</a>
-            </div>
-        </li> -->
-<!-- <li routerLinkActive="active"><a routerLink="/logout" class="nav-link">Logout</a></li> -->
-
-
-
-
-<!-- *ngIf="this.loginService.isUserLoggedIn()" -->
-<!-- <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">WebSiteName</a>
-          </div>
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Page 1</a></li>
-            <li><a href="#">Page 2</a></li>
-            <li><a href="#">Page 3</a></li>
-          </ul>
-        </div>
-      </nav> -->

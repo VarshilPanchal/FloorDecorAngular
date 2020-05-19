@@ -1,0 +1,29 @@
+input.ng-invalid.ng-touched{
+    border-color:red ;
+}
+select.ng-invalid.ng-touched{
+    border-color:red ;
+}
+ .color{
+     background-color: #f7f7f9;
+ }
+ .colors{
+    z-index: 10px;
+}
+
+.myFooter {
+      background: linear-gradient(rgba(27, 25, 25, 0.62), rgba(3, 0, 0, 0.9)), url(/assets/7.jpg);
+    
+      width: 100%;
+      height: 100%;
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 130px;
+}
+.myFooter h1{
+    color: white;
+}
+body {
+    background: #eeeded;
+  }

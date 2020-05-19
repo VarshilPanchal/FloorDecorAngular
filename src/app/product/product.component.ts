@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Product } from '../Forms/model/Product.model';
+import { HttpservicesService } from '../services/httpservices.service';
 
 @Component({
   selector: 'app-product',
@@ -8,19 +8,13 @@ import { Product } from '../Forms/model/Product.model';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  // selectedItem:Product;
-
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  showAdminBoard: boolean;
+  constructor(private router: Router, private route: ActivatedRoute,public loginService: HttpservicesService) { }
 
   ngOnInit(): void {
   }
-  // selectedItem($event){
-
-  //   console.log($event);
-
-  // }
 
   onNewProduct() {
-    this.router.navigate(['new'] ,{ relativeTo: this.route })
+    this.router.navigate(['new'], { relativeTo: this.route })
   }
 }

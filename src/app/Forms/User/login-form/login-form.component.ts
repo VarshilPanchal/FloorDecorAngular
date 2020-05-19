@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { User } from '../../model/User.model';
-import { HttpservicesService } from 'src/app/Services/httpservices.service';
+import { HttpservicesService } from 'src/app/services/httpservices.service';
 import { Router } from '@angular/router';
 import { TokenStorageServiceService } from 'src/app/services/token/token-storage-service.service';
 
@@ -59,38 +59,24 @@ export class LoginFormComponent implements OnInit {
         this.tokenStorage.saveUser(data);
         this.tokenStorage.saveRole(data.roles);
         localStorage.setItem('Username', this.form.username);
-
+        // localStorage.setItem('id', this.form);
+        
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+        // this.tokenStorage.reloadpage();
+       
+        alert("signed in successfully let's get buy product");
+        this.router.navigate(['home']);
       },
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
     );
-    //   data => {
-    //     console.log(data);
-    //     this.check = data;
-    //     if (this.check == true) {
-    //       localStorage.setItem('Username', this.username);
-    //       sessionStorage.setItem('AUTHENTICATED_USER', this.username);
-    //       this.router.navigate(['home']);
-    //     } else {
-    //       this.checkError = true;
-    //     }
-
-    //   },
-    //   error => {
-    //     console.log(error)
-    //   }
-    // );
   }
 
-
- 
-  reloadPage() {
-    window.location.reload();
-  }
+  // reloadPage() {
+  //   window.location.reload();
+  // }
 }

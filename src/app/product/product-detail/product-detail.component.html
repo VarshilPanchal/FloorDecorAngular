@@ -17,18 +17,20 @@
 
         <div class="card col-md-12 ">
             <div class="row my1">
-                <h1 class=" col-md-12 card-title">{{product.name}}</h1>
+                <h1 class=" col-md-12 card-title"> Name: {{product.name}}</h1>
                 <br><br><br><br><br><br>
                 <img class="card-img-top col-md-6" [src]="product.image" alt="{{product.name}}">
                 <div class="card-body col-md-6 my2">
-                    <p class="card-text">{{product.id}}</p>
-                    <p class="card-text">{{product.image}}</p>
-                    <p class="card-text">{{product.prize}}</p>
-                    <!-- <button class="btn btn-primary" (click)="getDetail()"> Buy </button> -->
+                    <p class="card-text"> Id: {{product.id}}</p>
+                    <!-- <p class="card-text">{{product.image}}</p> -->
+                    <p class="card-text"> Prize: {{product.prize}}</p>
+                    <p class="card-text"> Detail: {{product.productDetail}}</p> 
                 </div>
                 <div class="col-md-12 myCss">
-                    <button class="btn btn-primary btn-tag " (click)="getOrder(product.name)"> buy at {{product.prize}}
+                    <button class="btn btn-primary btn-tag " (click)="placeOrder(product.id)"> buy at {{product.prize}}
                     </button>
+        <button class="btn btn-primary btn-tag " *ngIf="this.loginService.isAdminLoggedIn()" (click)="editProduct(product.id,product)"> Edit Product </button>
+
                     <!-- <h5>{{product.prize}}</h5> -->
                 </div>
             </div>

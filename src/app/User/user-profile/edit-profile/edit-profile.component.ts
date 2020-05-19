@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Forms/model/User.model';
-import { HttpservicesService } from 'src/app/Services/httpservices.service';
+import { HttpservicesService } from 'src/app/services/httpservices.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

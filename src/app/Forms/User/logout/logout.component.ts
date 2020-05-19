@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpservicesService } from 'src/app/Services/httpservices.service';
+import { HttpservicesService } from 'src/app/services/httpservices.service';
 
 @Component({
   selector: 'app-logout',
@@ -13,7 +13,8 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
 
     this.userHttpService.logout();
-    
   }
-
+  reloadPage() {
+    window.location.reload();
+  }
 }

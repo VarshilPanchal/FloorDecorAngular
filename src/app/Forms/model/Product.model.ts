@@ -4,5 +4,5 @@ export class Product{
     name: string;
     image:string;
     prize:number;
-    detail:string
+    productDetail:string
 }

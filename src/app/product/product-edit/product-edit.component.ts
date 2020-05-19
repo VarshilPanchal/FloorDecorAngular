@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { ProductHttpService } from 'src/app/Services/product-http.service';
+import { ProductHttpService } from 'src/app/services/product-http.service';
 import { Product } from 'src/app/Forms/model/Product.model';
 
 @Component({
@@ -24,16 +24,16 @@ export class ProductEditComponent implements OnInit {
     this.productRegistration = formbuilder.group({
       id: ['', Validators.required],
       name: ['', Validators.required],
-      image: ['', [Validators.required, Validators.email]],
+      image: ['', [Validators.required]],
       prize: ['', Validators.required],
-      detail: ['', Validators.required],
+      productDetail: ['', Validators.required],
 
     })
     this.product = {
       id: null,
       name: '',
       image: '',
-      detail: '',
+      productDetail: '',
       prize: null,
     }
   }
@@ -60,7 +60,7 @@ export class ProductEditComponent implements OnInit {
     this.productHttpService.updateProduct(this.id, this.product).subscribe(
       data => {
         console.log(data)
-        // this.router.navigate(['dashboard'])
+         this.router.navigate(['../'],{relativeTo: this.route})
       }
     )
 

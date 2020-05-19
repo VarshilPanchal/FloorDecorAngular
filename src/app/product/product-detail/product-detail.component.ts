@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProductHttpService } from 'src/app/Services/product-http.service';
+import { ProductHttpService } from 'src/app/services/product-http.service';
 import { Product } from 'src/app/Forms/model/Product.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { HttpservicesService } from 'src/app/services/httpservices.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,7 +14,7 @@ export class ProductDetailComponent implements OnInit {
 
 
   id: any;
-  constructor(private producthttpService: ProductHttpService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private producthttpService: ProductHttpService, private route: ActivatedRoute, private router: Router , public loginService: HttpservicesService) { }
 
   ngOnInit(): void {
 
@@ -34,8 +35,14 @@ export class ProductDetailComponent implements OnInit {
       }
     )
   }
-  getOrder(name){
-    console.log("order place "+ name)
+  
+  placeOrder(id){
+    this.router.navigate(['placeorder/'+id]);
+    console.log("order place "+ id)
   }
+
+  editProduct(id,product){
+    this.router.navigate(['edit'] , {relativeTo : this.route});
+      }
   
 }

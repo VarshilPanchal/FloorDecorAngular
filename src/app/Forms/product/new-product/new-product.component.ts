@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ProductHttpService } from 'src/app/Services/product-http.service';
+import { ProductHttpService } from 'src/app/services/product-http.service';
 import { Product } from '../../model/Product.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-new-product',
@@ -16,21 +16,22 @@ export class NewProductComponent implements OnInit {
 
   constructor(private productHttpService: ProductHttpService,
     private formbuilder: FormBuilder,
-    private router: Router) {
+    private router: Router,
+      private route: ActivatedRoute) {
 
     this.productRegistration = formbuilder.group({
       id: ['', Validators.required],
       name: ['', Validators.required],
       image: ['', Validators.required],
       prize: ['', Validators.required],
-      detail: ['', Validators.required],
+      productDetail: ['', Validators.required],
 
     })
     this.product = {
       id: null,
       name: '',
       image: '',
-      detail: '',
+      productDetail: '',
       prize: null,
     }
 
@@ -48,9 +49,10 @@ export class NewProductComponent implements OnInit {
     this.product.name = this.productRegistration.get('name').value;
     this.product.image = this.productRegistration.get('image').value;
     this.product.prize = this.productRegistration.get('prize').value;
-    this.product.detail = this.productRegistration.get('detail').value;
+    this.product.productDetail = this.productRegistration.get('productDetail').value;
     this.productHttpService.registrationOfProduct(this.product).subscribe(productRegistration => {
       console.log('register success', productRegistration);
+      this.router.navigate(['../'],{relativeTo: this.route})
       // this.gotoLoginPage();
     }, error => {
       console.log(error)

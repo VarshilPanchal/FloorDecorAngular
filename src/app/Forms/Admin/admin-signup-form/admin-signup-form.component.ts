@@ -21,32 +21,10 @@ export class AdminSignupFormComponent implements OnInit {
   // userData: Admin;
   genders = ['male', 'female'];
 
-  // admin = {
-  // username= '';
-  // email= '';
-  // password= '';
-  // gender= ''
-  // }
-
-
-
   ngOnInit(): void {
 
   }
 
-  // onSubmit() {
-  //   this.admin.email = this.adminForm.value.email;
-  //   this.admin.password = this.adminForm.value.password;
-  //   this.admin.adminname = this.adminForm.value.username;
-  //   // this.adminForm.adminname = this.userData.get('username').value;
-  //   // this.adminForm.password = this.userData.get('pssword').value;
-  //   this.adminservice.registrAdmin(this.admin).subscribe(adminData => {
-  //     console.log('register success', adminData);
-  //   }, error => {
-  //     console.log(error)
-  //     console.log(this.adminForm);
-  //   })
-  // }
 
 
   onSubmit() {

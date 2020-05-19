@@ -27,6 +27,13 @@ import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboar
 import { AuthInterceptor, authInterceptorProviders } from './interceptor/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { OrderDetailFormComponent } from './orders/order-detail-form/order-detail-form.component';
+import { MyOrderComponent } from './orders/my-order/my-order.component';
+import { OrderListComponent } from './orders/order-list/order-list.component';
+import { RouterModule } from '@angular/router';
+import { OrdersHomeComponent } from './orders/orders-home/orders-home.component';
+import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart.component';
+// import { OrdersComponent } from './orders/orders/orders.component';
 // NOT RECOMMENDED (Angular 9 doesn't support this kind of import)
 // import { ModalModule } from 'ngx-bootstrap';
 
@@ -56,19 +63,29 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ProductEditComponent,
     AdminDashboardComponent,
     UserDashboardComponent,
+    OrderDetailFormComponent,
+    MyOrderComponent,
+    OrderListComponent,
+    OrdersHomeComponent,
+    DoughnutChartComponent,
+    // OrdersComponent,
 
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    // RouterModule,
+    // RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     ModalModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    
     
   ],
+  // exports:[RouterModule],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })

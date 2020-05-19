@@ -16,10 +16,16 @@ import { NewProductComponent } from './forms/product/new-product/new-product.com
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
 import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
+import { OrderDetailFormComponent } from './orders/order-detail-form/order-detail-form.component';
+import { MyOrderComponent } from './orders/my-order/my-order.component';
+import { OrderListComponent } from './orders/order-list/order-list.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrdersHomeComponent } from './orders/orders-home/orders-home.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: LoginFormComponent },
+
   {
     path: 'product', component: ProductComponent, children: [
 
@@ -28,12 +34,14 @@ const routes: Routes = [
       { path: 'new', component: NewProductComponent },
       { path: 'productlist/:id', component: ProductDetailComponent },
       { path: 'productlist/:id/edit', component: ProductEditComponent }
-
+      
     ]
   },
   { path: 'home', component: HomeComponent, },
+
   { path: 'admin/dashboard', component: AdminDashboardComponent },
   { path: 'user/dashboard', component: UserDashboardComponent },
+
   { path: 'login', component: LoginFormComponent, },
   { path: 'signup', component: SignupFormComponent },
   { path: 'logout', component: LogoutComponent, },
@@ -45,12 +53,26 @@ const routes: Routes = [
     ]
   },
 
-  {
-    path: 'userprofile', component: UserProfileComponent, children: [
-
-    ]
-  },
+  { path: 'userprofile', component: UserProfileComponent },
   { path: 'editprofile/:id', component: EditProfileComponent, },
+
+  { path: 'placeorder/:id', component: OrderDetailFormComponent, },
+  { path: 'placeorder/:id/edit', component: OrderDetailFormComponent, },
+
+  { path: 'myorder', component: MyOrderComponent },
+  { path: 'orderlist', component: OrderListComponent },
+
+  // {
+  //   path: 'orderDetail', component: OrdersComponent, children: [
+  //     // { path: '', redirectTo: 'orderDetail', pathMatch: 'full' },
+  //     { path: '', component: OrdersHomeComponent },
+  //     { path: 'myorder', component: MyOrderComponent },
+
+  //   ]
+  // }
+
+  
+
 
   // {
   //   path: 'productlist', component: ProductListComponent,

@@ -36,7 +36,7 @@ id="bootstrap-css">
                              </span>
                     </div>
                     <div class="form-group">
-                        <label for="image"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <label for="image"><i class="fa fa-file-image-o" aria-hidden="true"></i></label>
                         <input type="text" name="imge" id="image" formControlName="image"
                             placeholder="Product Image URL" />
                             <span *ngIf="!productRegistration.get('image').valid && productRegistration.get('image').touched" class="help-block">
@@ -44,10 +44,10 @@ id="bootstrap-css">
                              </span>
                     </div>
                     <div class="form-group">
-                        <label for="text"><i class="zmdi zmdi-email"></i></label>
-                        <input type="text" name="detail" id="detail" formControlName="detail"
+                        <label for="text"><i class="fa fa-info"></i></label>
+                        <input type="text" name="detail" id="detail" formControlName="productDetail"
                             placeholder="Prodyct Detail" />
-                            <span *ngIf="!productRegistration.get('detail').valid && productRegistration.get('detail').touched  " class="help-block">
+                            <span *ngIf="!productRegistration.get('productDetail').valid && productRegistration.get('productDetail').touched  " class="help-block">
                                 please enter valid detail
                              </span>
                              <!-- <span *ngIf="userregistrationForm.get('email').touched || userregistrationForm.get('email').dirty" class="help-block">
@@ -55,7 +55,7 @@ id="bootstrap-css">
                              </span> -->
                     </div>
                     <div class="form-group">
-                        <label for="prize"><i class="zmdi zmdi-phone"></i></label>
+                        <label for="prize"><i class="fa fa-inr  "></i></label>
                         <input type="number" name="prize" id="prize" formControlName="prize"
                             placeholder="Product Prize" />
                             <span *ngIf="!productRegistration.get('prize').valid && productRegistration.get('prize').touched" class="help-block">

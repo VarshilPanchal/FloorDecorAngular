@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Forms/model/User.model';
 import { Router, Params, ActivatedRoute } from '@angular/router';
-import { HttpservicesService } from 'src/app/Services/httpservices.service';
+import { HttpservicesService } from 'src/app/services/httpservices.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { UserListFilter } from './userList';
 // import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -34,7 +34,6 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.refreceUserList();
   }
 
@@ -94,7 +93,6 @@ export class UserListComponent implements OnInit {
 
     } else if (this.userlist.get('list').value == "inactive") {
       this.getInactiveUserlist();
-
     }
   }
 }

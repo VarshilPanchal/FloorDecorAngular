@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpservicesService } from 'src/app/Services/httpservices.service';
+import { HttpservicesService } from 'src/app/services/httpservices.service';
 
 @Component({
   selector: 'app-user-dashboard',

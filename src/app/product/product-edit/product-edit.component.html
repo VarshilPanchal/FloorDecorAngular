@@ -17,7 +17,7 @@
                     <!-- <form [formGroup]='productRegistration' class="register-form" id="register-form"
                     (ngSubmit)="updateProduct()"
                     > -->
-                    <h2 class="form-title">Add new Product</h2>
+                    <h2 class="form-title">Edit  Product</h2>
                     <div class="form-group">
                         <label for="id"><i class="zmdi zmdi-account material-icons-name"></i></label>
                         <input type="number" name="id" id="id" placeholder="Product id" [(ngModel)]="product.id" />
@@ -47,10 +47,10 @@
                     </div>
                     <div class="form-group">
                         <label for="text"><i class="zmdi zmdi-email"></i></label>
-                        <textarea type="text" name="detail" id="detail" placeholder="Prodyct Detail" rows="6"
-                            [(ngModel)]="product.detail"></textarea>
+                        <input type="text" name="detail" id="detail" placeholder="Product Detail" rows="6"
+                            [(ngModel)]="product.productDetail"/>
                         <span
-                            *ngIf="!productRegistration.get('detail').valid && productRegistration.get('detail').touched  "
+                            *ngIf="!productRegistration.get('productDetail').valid && productRegistration.get('productDetail').touched  "
                             class="help-block">
                             please enter valid detail
                         </span>

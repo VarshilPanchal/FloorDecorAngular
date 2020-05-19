@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../Forms/model/User.model';
+import { TokenStorageServiceService } from './token/token-storage-service.service';
 
 const AUTH_API = 'http://localhost:8080/api/auth/';
 
@@ -18,11 +19,13 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class HttpservicesService {
+  roles: String[];
+  adminLoggedIn = false;
 
   public username;
 
   constructor(private http: HttpClient,
-    private router: Router) { }
+    private router: Router, private tokenService: TokenStorageServiceService) { }
 
 
   public findAllUser(): Observable<User[]> {
@@ -53,8 +56,19 @@ export class HttpservicesService {
     return !(user === null);
   }
 
+  isAdminLoggedIn() {
+    let admin = this.tokenService.getUser();
+    this.roles = admin.roles;
+    if (this.adminLoggedIn = this.roles.includes('ROLE_ADMIN')) {
+      return true;
+    } else {
+      return
+    }
+  }
+
   logout() {
     localStorage.removeItem('Username');
+    window.sessionStorage.clear();
     console.log("username successfully removed");
     this.router.navigate(['/logout']);
   }
@@ -63,7 +77,7 @@ export class HttpservicesService {
     return this.http.post(AUTH_API + 'signin', {
       username: credentials.username,
       password: credentials.password
-    },httpOptions);
+    }, httpOptions);
   }
 
   register(user): Observable<any> {
@@ -71,10 +85,12 @@ export class HttpservicesService {
       username: user.username,
       email: user.email,
       password: user.password
-    },httpOptions);
+    }, httpOptions);
+
+
   }
- 
-  public getActiveUser(): Observable<User[]>{
+
+  public getActiveUser(): Observable<User[]> {
     return this.http.get<User[]>(USER_API + 'active');
   }
 
@@ -97,7 +113,7 @@ export class HttpservicesService {
     return this.http.get(API_URL + 'admin', { responseType: 'text' });
   }
 
-  changeStatus(id,status){
+  changeStatus(id, status) {
     return this.http.get(`http://localhost:8080/api/user/updatestatus/${id}/${status}`)
   }
 }
