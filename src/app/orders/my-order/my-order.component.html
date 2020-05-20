@@ -17,9 +17,7 @@
                         </div>
                     </div>
 
-                    <!-- <div class="col-xs-12 col-sm-6 col-md-3 gutter-margin-xs-sm gutter-margin-sm-md">
-                        <div class="inner"><span class="pull-right"><b>OTP: </b>{{user.end_services_otp}}</span></div>
-                    </div> -->
+                   
                 </div>
 
             </div>
@@ -28,23 +26,21 @@
                     <div class="col-12">Name: <b>{{user.name}}</b></div>
                     <div class="col-12">Address: <b>{{user.address}}</b></div>
                     <div class="col-12">Landmark: <b>{{user.landmark}}</b></div>
+                    <div class="col-12">Pincode: <b>{{user.pincode}}</b></div>
                     <div class="col-12">City: <b>{{user.city}}</b></div>
+                    <div class="col-12">phone number: <b>{{user.phoneNumber}}</b></div>
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-6 gutter-margin-xs-sm gutter-margin-sm-md">
                     <div class="col-12" *ngIf="!user.activeStatus">Status :
                         <b>pending</b></div>
-                        <div class="col-12" *ngIf="user.activeStatus">Status :
+                        <div class="col-12" *ngIf="user.approvedOrder">Status :
                             <b>order approved by Admin</b></div>
-                   <!--  <div class="col-12" *ngIf="user.split_ac_service>0">Split Ac Service:
-                        <b>{{user.split_ac_service}}</b></div>
-                    <div class="col-12" *ngIf="user.less_no_cooling>0">Less/No Cooling: <b>{{user.less_no_cooling}}</b>
-                    </div>
-                    <div class="col-12" *ngIf="user.ac_not_starting>0">Ac Not Strating: <b>{{user.ac_not_starting}}</b>
-                    </div>
-                    <div class="col-12" *ngIf="user.noise_issue>0">Noise Issue: <b>{{user.noise_issue}}</b></div>
-                    <div class="col-12" *ngIf="user.water_leakege>0">Water Leakege: <b>{{user.water_leakege}}</b></div> -->
-                    <button (click)="updateOrder(user.id)">edit order</button>
+                            <div class="col-12" *ngIf="user.rejectedOrder">Status :
+                                <b>order approved by Admin</b></div>
+                  
+                                <button *ngIf="!user.approvedOrder" (click)="updateOrder(user.id)">edit order</button>
+                                <button *ngIf="!user.approvedOrder" (click)="deleteOrder(user.id)">delete order</button>
                 </div>
             </div>
         </div>

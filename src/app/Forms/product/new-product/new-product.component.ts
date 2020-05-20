@@ -33,6 +33,7 @@ export class NewProductComponent implements OnInit {
       image: '',
       productDetail: '',
       prize: null,
+      activeflag:false,
     }
 
   }

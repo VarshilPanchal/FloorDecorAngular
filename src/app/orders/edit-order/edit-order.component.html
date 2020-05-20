@@ -1,12 +1,11 @@
-<!-- <form class="needs-validation" [formGroup]="bookingForm"> -->
-<div class="container" [formGroup]="bookingForm">
-    <div class="card-deck col-md-9">
+<p>order-detail-form works!</p>
+<div class="container">
+    <div class="card-deck col-md-6" >
 
-        <!-- card for address -->
         <div class="card colors">
             <div class="card-body">
                 <div class="card-header col-md-12 pull-center">
-                    <i class=" fa fa-align-justify"></i> Order Details
+                    <i class=" fa fa-align-justify"></i>Edit Order Details
                 </div>
                 <br />
                 <div class="form-group">
@@ -14,15 +13,15 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Name</span>
                         </div>
-                        <input type="text" class="form-control" formControlName="name" class="form-control">
+                        <input type="text" class="form-control"  class="form-control"
+                        [(ngModel)]="order.name"
+                           >
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fa fa-user"></i></span>
                         </div>
-                        <div class="alert-danger" *ngIf="bookingForm.get('name').touched">
-                            <div *ngIf=" !bookingForm.get('name').valid  ">
-                                please enter valid username
-                            </div>
-                        </div>
+                        <!-- <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">UserName is required</div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="form-group">
@@ -30,70 +29,68 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Mobile No</span>
                         </div>
-                        <input type="text" class="form-control" formControlName='phoneNumber'
-                            [pattern]="'[789][0-9]{9}'">
+                        <input type="text" class="form-control"  [pattern]="'[789][0-9]{9}'"
+                        [(ngModel)]="order.phoneNumber"
+                        >
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fa fa-phone" aria-hidden="true"></i></span>
                         </div>
-                        <div class="alert-danger" *ngIf="bookingForm.get('phoneNumber').touched">
-                            <div *ngIf=" !bookingForm.get('phoneNumber').valid  ">
-                                please enter valid phonenumber
-                            </div>
-                        </div>
-
+                        <!-- <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+                            <div *ngIf="f.number.errors.required">Valid Mobile Number is required</div>
+                        </div> -->
                     </div>
                 </div>
-                <div class="form-group">
+                     <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Address</span>
                         </div>
-                        <input type="text" class="form-control" formControlName="address"
-                            placeholder="House/Flate number , House Name">
+                        <input type="text" class="form-control"
+                            placeholder="House/Flate number , House Name"
+                            [(ngModel)]="order.address" 
+                            >
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
                         </div>
-                        <div class="alert-danger" *ngIf="bookingForm.get('address').touched">
-                            <div *ngIf=" !bookingForm.get('address').valid  ">
-                                please enter House/Flate number , House Name
-                            </div>
-                        </div>
+                        <!-- <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                            <div *ngIf="f.address.errors.required">House/Flate number , House Name</div>
+                        </div> -->
                     </div>
                 </div>
-
+                
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Landmark</span>
                         </div>
-                        <input type="text" class="form-control" formControlName="landmark" placeholder="Landmark">
+                        <input type="text" class="form-control"
+                            placeholder="Landmark" [(ngModel)]="order.landmark">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
                         </div>
-                        <div class="alert-danger" *ngIf="bookingForm.get('landmark').touched ">
-                            <div *ngIf=" !bookingForm.get('landmark').valid && bookingForm.get('landmark').errors ">
-                                please enter landmark
-                            </div>
-                        </div>
+                        <!-- <div *ngIf="submitted && f.landmark?.errors" class="invalid-feedback">
+                            <div *ngIf="f.landmark?.errors?.required">Landmark is required</div>
+                        </div> -->
                     </div>
                 </div>
-
+                
                 <div class="row">
+
+
                     <div class="form-group col-md-6">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">City</span>
                             </div>
-                            <input type="text" class="form-control" formControlName="city" placeholder="City">
+                            <input type="text" class="form-control"  placeholder="City" 
+                            [(ngModel)]="order.city">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fa fa-map-marker"
                                         aria-hidden="true"></i></span>
                             </div>
-                            <div class="alert-danger" *ngIf="bookingForm.get('city').touched ">
-                                <div *ngIf=" !bookingForm.get('city').valid && bookingForm.get('city').errors ">
-                                    please enter landmark
-                                </div>
-                            </div>
+                            <!-- <div *ngIf="submitted && f.city?.errors" class="invalid-feedback">
+                                <div *ngIf="f.city?.errors?.required">city is required</div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="form-group col-md-6">
@@ -102,23 +99,20 @@
                                 <span class="input-group-text">Pincode</span>
                             </div>
                             <input type="number" class="form-control" [pattern]="'[3][0-9]{5}'"
-                                formControlName="pincode" placeholder="Pin Code">
+                                placeholder="Pin Code" [(ngModel)]="order.pincode"
+                                >
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fa fa-map-marker"
                                         aria-hidden="true"></i></span>
                             </div>
-                            <div class="alert-danger" *ngIf="bookingForm.get('pincode').touched ">
-                                <div *ngIf=" !bookingForm.get('pincode').valid && bookingForm.get('pincode').errors ">
-                                    please enter landmark
-                                </div>
-                            </div>
+                            <!-- <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
+                                <div *ngIf="f.pincode.errors.required">Valid pincode is required</div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success" (click)="placeorder(bookingForm)"> Order</button>
-                <div class="alert alert-danger" *ngIf=" !submitted && bookingForm.touched">
-                    <div *ngIf="bookingForm.invalid ">please enter valid detail</div>
-                </div>
+                <button class="btn btn-success"  (click)="updateOrder(order.id,order)" > Order</button>
+                
                 <!-- <button class="btn btn-success" *ngIf="order" (click)="updateOrder(order.id,order)" > update Order</button> -->
 
             </div>

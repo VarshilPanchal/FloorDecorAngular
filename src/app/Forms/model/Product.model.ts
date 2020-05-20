@@ -4,5 +4,6 @@ export class Product{
     name: string;
     image:string;
     prize:number;
-    productDetail:string
+    productDetail:string;
+    activeflag:boolean;
 }

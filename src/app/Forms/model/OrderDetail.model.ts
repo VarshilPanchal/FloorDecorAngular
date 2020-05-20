@@ -8,5 +8,6 @@ export class OrderDetail {
     pincode: number;
     city: string;
     phoneNumber: number;
-
+    approvedOrder:boolean;
+    rejectedOrder:boolean;
 }

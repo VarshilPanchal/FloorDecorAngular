@@ -1,16 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { LoginFormComponent } from './Forms/User/login-form/login-form.component';
 import { SignupFormComponent } from './Forms/User/signup-form/signup-form.component';
-import { HomeComponent } from './home/home.component';
-import { AdminSignupFormComponent } from './Forms/Admin/admin-signup-form/admin-signup-form.component';
-import { AdminLonginFormComponent } from './Forms/Admin/admin-longin-form/admin-longin-form.component';
 import { UserListComponent } from './User/user-list/user-list.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
@@ -22,34 +18,23 @@ import { EditProfileComponent } from './user/user-profile/edit-profile/edit-prof
 import { LogoutComponent } from './forms/user/logout/logout.component';
 import { NewProductComponent } from './forms/product/new-product/new-product.component';
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
-import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard.component';
-import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
-import { AuthInterceptor, authInterceptorProviders } from './interceptor/auth.interceptor';
+import {  authInterceptorProviders } from './interceptor/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { OrderDetailFormComponent } from './orders/order-detail-form/order-detail-form.component';
 import { MyOrderComponent } from './orders/my-order/my-order.component';
 import { OrderListComponent } from './orders/order-list/order-list.component';
-import { RouterModule } from '@angular/router';
-import { OrdersHomeComponent } from './orders/orders-home/orders-home.component';
 import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart.component';
-// import { OrdersComponent } from './orders/orders/orders.component';
-// NOT RECOMMENDED (Angular 9 doesn't support this kind of import)
-// import { ModalModule } from 'ngx-bootstrap';
-
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChartsModule } from 'ng2-charts';
+import { EditOrderComponent } from './orders/edit-order/edit-order.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     LoginFormComponent,
     SignupFormComponent,
-    HomeComponent,
-    AdminSignupFormComponent,
-    AdminLonginFormComponent,
     UserListComponent,
     ProductListComponent,
     ProductDetailComponent,
@@ -61,31 +46,25 @@ import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart.c
     LogoutComponent,
     NewProductComponent,
     ProductEditComponent,
-    AdminDashboardComponent,
-    UserDashboardComponent,
     OrderDetailFormComponent,
     MyOrderComponent,
     OrderListComponent,
-    OrdersHomeComponent,
     DoughnutChartComponent,
-    // OrdersComponent,
-
+    EditOrderComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // RouterModule,
-    // RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     ModalModule.forRoot(),
     BrowserAnimationsModule,
-    
+    ChartsModule
+  
     
   ],
-  // exports:[RouterModule],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })

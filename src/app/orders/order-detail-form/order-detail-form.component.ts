@@ -58,6 +58,8 @@ export class OrderDetailFormComponent implements OnInit {
       pincode: null,
       city: '',
       phoneNumber: null,
+      rejectedOrder: false,
+      approvedOrder: false
 
     }
 
@@ -74,23 +76,30 @@ export class OrderDetailFormComponent implements OnInit {
   }
 
   placeorder(bookingForm) {
-    this.submitted = true;
+    
 
-    this.orderDetail.productId = this.orderDetail.productId;
-    this.orderDetail.userId = +window.sessionStorage.getItem('id');
-    this.orderDetail.name = this.bookingForm.get('name').value;
-    this.orderDetail.address = this.bookingForm.get('address').value;
-    this.orderDetail.landmark = this.bookingForm.get('landmark').value;
-    this.orderDetail.pincode = this.bookingForm.get('pincode').value;
-    this.orderDetail.city = this.bookingForm.get('city').value;
-    this.orderDetail.phoneNumber = this.bookingForm.get('phoneNumber').value;
-    this.orderServices.placeOrder(this.orderDetail).subscribe(
-      response => {console.log(response)
-      this.router.navigate(['myorder'],{relativeTo: this.route});
-       }
-        ,error => {
-      this.errorMessage = error.error.message;
-    })
+    if (bookingForm.valid) {
+      this.submitted = true;
+
+      this.orderDetail.productId = this.orderDetail.productId;
+      this.orderDetail.userId = +window.sessionStorage.getItem('id');
+      this.orderDetail.name = this.bookingForm.get('name').value;
+      this.orderDetail.address = this.bookingForm.get('address').value;
+      this.orderDetail.landmark = this.bookingForm.get('landmark').value;
+      this.orderDetail.pincode = this.bookingForm.get('pincode').value;
+      this.orderDetail.city = this.bookingForm.get('city').value;
+      this.orderDetail.phoneNumber = this.bookingForm.get('phoneNumber').value;
+      this.orderServices.placeOrder(this.orderDetail).subscribe(
+        response => {
+          console.log(response)
+          this.router.navigate(['myorder']);
+        }
+        , error => {
+          this.errorMessage = error.error.message;
+        })
+    }else{
+      this.errorMessage = "please enter valid detail";
+    }
 
 
     console.log(this.orderDetail)

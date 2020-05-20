@@ -67,7 +67,7 @@ export class LoginFormComponent implements OnInit {
         // this.tokenStorage.reloadpage();
        
         alert("signed in successfully let's get buy product");
-        this.router.navigate(['home']);
+        this.router.navigate(['product/productlist']);
       },
       err => {
         this.errorMessage = err.error.message;

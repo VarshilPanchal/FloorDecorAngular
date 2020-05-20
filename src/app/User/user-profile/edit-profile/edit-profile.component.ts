@@ -20,20 +20,19 @@ export class EditProfileComponent implements OnInit {
 
     this.id = this.route.snapshot.params['id'];
     this.user = new User();
-    this.userHttpService.userDetailById(this.id).subscribe(
+    this.getUserDetail(this.id)
+  }
+  getUserDetail(id){
+    this.userHttpService.userDetailById(id).subscribe(
       data => this.user = data
     )
-
   }
   updateData() {
     this.userHttpService.updateUser(this.id, this.user).subscribe(
       data => {
-        console.log(data)
-        // this.router.navigate(['dashboard'])
+        console.log(data) 
       }
     )
   }
 
-  // updateData(updateForm){
-  // }
 }

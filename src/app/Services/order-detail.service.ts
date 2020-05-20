@@ -36,7 +36,7 @@ export class OrderDetailService {
 
   public updatOrder(id: any, order: OrderDetail) {
 
-    return this.http.put<OrderDetail>(`http://localhost:8080/api/order/update/${id}`, order);
+    return this.http.put<OrderDetail>(`${ORDER_API}update/${id}`, order);
   }
 
   GetSingleOrderByID(id) {
@@ -47,13 +47,8 @@ export class OrderDetailService {
     return this.http.get<OrderDetail>(`${ORDER_API}statuschange/${id}/${number}`);
   }
 
-  // public getStatusChange(id, number) {
-  //   if (number) {
-  //     return this.http.get(`${ORDER_API}statuschange/${id}/` + 1);
-  //   } else {
-  //     return this.http.get(`${ORDER_API}statuschange/${id}/` + 0);
-
-  //   }
-  // }
+  public deleteUser(id) {
+    return this.http.delete(`${ORDER_API}delete/${id}`)
+  }
 
 }

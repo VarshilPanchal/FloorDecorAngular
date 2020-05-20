@@ -19,7 +19,6 @@ export class SignupFormComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  // username:'';
 
   constructor(
     private userRegistrationServices: HttpservicesService,
@@ -31,7 +30,6 @@ export class SignupFormComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       active: [false]
-      // phonenumber: ['', Validators.required],
 
     })
     this.registrationfield = {
@@ -40,11 +38,7 @@ export class SignupFormComponent implements OnInit {
       email: '',
       password: '',
       active: false
-      // phonenumber: null,
-      // activeflag: false,
-      // orders: 0,
-      // approvedOrders: 0,
-      // rejectedOrders: 0
+
     }
 
   }
@@ -62,7 +56,6 @@ export class SignupFormComponent implements OnInit {
       this.registrationfield.username = this.userregistrationForm.get('username').value;
       this.registrationfield.email = this.userregistrationForm.get('email').value;
       this.registrationfield.password = this.userregistrationForm.get('password').value;
-      // this.registrationfield.phonenumber = this.userregistrationForm.get('phonenumber').value;
       this.registrationfield.active = this.userregistrationForm.get('active').value;
       this.userRegistrationServices.register(this.registrationfield).subscribe(userregistrationForm => {
         console.log(this.registrationfield.active);

@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SignupFormComponent } from './Forms/User/signup-form/signup-form.component';
-import { HomeComponent } from './home/home.component';
-import { AdminSignupFormComponent } from './Forms/Admin/admin-signup-form/admin-signup-form.component';
 import { UserListComponent } from './User/user-list/user-list.component';
 import { LoginFormComponent } from './Forms/User/login-form/login-form.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
@@ -14,13 +12,10 @@ import { EditProfileComponent } from './user/user-profile/edit-profile/edit-prof
 import { LogoutComponent } from './forms/user/logout/logout.component';
 import { NewProductComponent } from './forms/product/new-product/new-product.component';
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
-import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard.component';
-import { UserDashboardComponent } from './dashboard/user-dashboard/user-dashboard.component';
 import { OrderDetailFormComponent } from './orders/order-detail-form/order-detail-form.component';
 import { MyOrderComponent } from './orders/my-order/my-order.component';
 import { OrderListComponent } from './orders/order-list/order-list.component';
-import { OrdersComponent } from './orders/orders.component';
-import { OrdersHomeComponent } from './orders/orders-home/orders-home.component';
+import { EditOrderComponent } from './orders/edit-order/edit-order.component';
 
 
 const routes: Routes = [
@@ -34,53 +29,26 @@ const routes: Routes = [
       { path: 'new', component: NewProductComponent },
       { path: 'productlist/:id', component: ProductDetailComponent },
       { path: 'productlist/:id/edit', component: ProductEditComponent }
-      
+
     ]
   },
-  { path: 'home', component: HomeComponent, },
-
-  { path: 'admin/dashboard', component: AdminDashboardComponent },
-  { path: 'user/dashboard', component: UserDashboardComponent },
 
   { path: 'login', component: LoginFormComponent, },
   { path: 'signup', component: SignupFormComponent },
   { path: 'logout', component: LogoutComponent, },
+  
   {
-    path: 'userslist', component: UserListComponent, children: [
-
-      { path: ':active', component: UserListComponent },
-      { path: ':inactive', component: UserListComponent }
-    ]
+    path: 'userslist', component: UserListComponent
   },
 
   { path: 'userprofile', component: UserProfileComponent },
   { path: 'editprofile/:id', component: EditProfileComponent, },
 
   { path: 'placeorder/:id', component: OrderDetailFormComponent, },
-  { path: 'placeorder/:id/edit', component: OrderDetailFormComponent, },
+  { path: 'placeorder/:id/edit', component: EditOrderComponent, },
 
   { path: 'myorder', component: MyOrderComponent },
   { path: 'orderlist', component: OrderListComponent },
-
-  // {
-  //   path: 'orderDetail', component: OrdersComponent, children: [
-  //     // { path: '', redirectTo: 'orderDetail', pathMatch: 'full' },
-  //     { path: '', component: OrdersHomeComponent },
-  //     { path: 'myorder', component: MyOrderComponent },
-
-  //   ]
-  // }
-
-  
-
-
-  // {
-  //   path: 'productlist', component: ProductListComponent,
-  // },
-  // {
-  //   path: 'productdetail', component: ProductDetailComponent,
-  // },
-
 
 ];
 

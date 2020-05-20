@@ -12,7 +12,7 @@ import { OrderDetail } from 'src/app/forms/model/OrderDetail.model';
 export class MyOrderComponent implements OnInit {
   // @Input() order :OrderDetail;
 
-  userOrderDetail;
+  userOrderDetail: OrderDetail;
   id;
   // order;
   editMode;
@@ -42,11 +42,13 @@ export class MyOrderComponent implements OnInit {
   }
 
   updateOrder(id) {
-
     // this.userOrderDetail.id;
-    this.router.navigate([`placeorder/${id}`]);
+    this.router.navigate([`placeorder/${id}/edit`]);
+  }
 
-
+  deleteOrder(id){
+    this.orderDetailService.deleteUser(id).subscribe(response=>console.log(response));
+    this.getuserdetail();
   }
 
 }

@@ -29,26 +29,26 @@ export class HttpservicesService {
 
 
   public findAllUser(): Observable<User[]> {
-    return this.http.get<User[]>('http://localhost:8080/api/user/list');
+    return this.http.get<User[]>(`${USER_API}list`);
   }
 
   public deleteUser(id) {
-    return this.http.delete(`http://localhost:8080/api/user/delete/${id}`)
+    return this.http.delete(`${USER_API}delete/${id}`)
   }
 
   public updateUser(id: any, user: User) {
 
-    return this.http.put<User>(`http://localhost:8080/api/user/update/${id}`, user);
+    return this.http.put<User>(`${USER_API}update/${id}`, user);
   }
 
   public userDetailById(id: any) {
     // const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('auth-token')}` });
-    return this.http.get<User>(`http://localhost:8080/api/user/single/${id}`);
+    return this.http.get<User>(`${USER_API}single/${id}`);
   }
 
   getUserId() {
     let username = localStorage.getItem('Username');
-    return this.http.get(`http://localhost:8080/api/user/${username}`);
+    return this.http.get(`${USER_API}${username}`);
   }
 
   isUserLoggedIn() {
@@ -86,8 +86,6 @@ export class HttpservicesService {
       email: user.email,
       password: user.password
     }, httpOptions);
-
-
   }
 
   public getActiveUser(): Observable<User[]> {
@@ -97,23 +95,7 @@ export class HttpservicesService {
   getInactiveUser(): Observable<User[]> {
     return this.http.get<User[]>(USER_API + 'inactive');
   }
-  getPublicContent(): Observable<any> {
-    return this.http.get(API_URL + 'all', { responseType: 'text' });
-  }
-
-  getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'user', { responseType: 'text' });
-  }
-
-  getModeratorBoard(): Observable<any> {
-    return this.http.get(API_URL + 'mod', { responseType: 'text' });
-  }
-
-  getAdminBoard(): Observable<any> {
-    return this.http.get(API_URL + 'admin', { responseType: 'text' });
-  }
-
   changeStatus(id, status) {
-    return this.http.get(`http://localhost:8080/api/user/updatestatus/${id}/${status}`)
+    return this.http.get(`${USER_API}updatestatus/${id}/${status}`)
   }
 }

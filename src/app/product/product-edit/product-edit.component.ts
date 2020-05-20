@@ -35,6 +35,7 @@ export class ProductEditComponent implements OnInit {
       image: '',
       productDetail: '',
       prize: null,
+      activeflag:false,
     }
   }
 

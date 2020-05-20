@@ -6,47 +6,18 @@
         </div>
 
         <ul class="navbar-nav ">
-            <li routerLinkActive="active"><a routerLink="/home" class="nav-link" *ngIf="this.userHttpService.isUserLoggedIn()">Home</a></li>
             <li routerLinkActive="active" *ngIf="this.userHttpService.isUserLoggedIn() && this.userHttpService.isAdminLoggedIn()"><a routerLink="userslist"  class="nav-link">User</a></li>
             <li routerLinkActive="active" *ngIf="this.userHttpService.isUserLoggedIn()"><a routerLink="product/productlist"  class="nav-link">Product</a></li>
             <li routerLinkActive="active" *ngIf="this.userHttpService.isUserLoggedIn() && this.userHttpService.isAdminLoggedIn()"><a routerLink="orderlist"  class="nav-link">Orders</a></li>
         </ul>
 
-        <!-- <ul class="navbar-nav navbar-collapse justify-content-end">
-            <li class="nav-item dropdown  font1">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" ><i class="fa fa-dashboard" aria-hidden="true"></i>
-                   Dashboard
-                </a>
-                <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item nav-link font1" routerLink="myorder">My Order List</a></li>
-                    <li><a class="dropdown-item nav-link font1" routerLink="approvedorder">Approved Order  </a></li>
-                    <li><a class="dropdown-item nav-link font1" routerLink="rejectedorder">Rejected Order</a></li>
-                    <li><a class="dropdown-item nav-link font1"  routerLink="logout">Logout</a></li>
-                </ul>
-            </li>
-        </ul> -->
-
-        <!-- <ul class="navbar-nav navbar-collapse justify-content-end">
-            <li class="nav-item dropdown  font1">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" ><i class="fa fa-dashboard " aria-hidden="true" ></i>
-                  Admin's Dashboard
-                </a>
-                <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item nav-link font1" routerLink="userslist"  >Total user</a></li>
-                    <li><a class="dropdown-item nav-link font1" routerLink="userslist"  >Active User</a></li>
-                    <li><a class="dropdown-item nav-link font1" routerLink="userslist">Inactive User</a></li>
-                    <li><a class="dropdown-item nav-link font1" routerLink="orderlist">Total Orders</a></li>
-                    <li><a class="dropdown-item nav-link font1"  routerLink="">Chart </a></li>
-                </ul>
-            </li>
-        </ul> -->
 
         <ul class="navbar-nav navbar-collapse justify-content-end">
             <li routerLinkActive="active"><a routerLink="/signup" class="nav-link" *ngIf="!this.userHttpService.isUserLoggedIn()" >signup</a></li>
             <li routerLinkActive="active"><a routerLink="/login" class="nav-link" *ngIf="!this.userHttpService.isUserLoggedIn()" >Login</a></li>
-            <li class="nav-item dropdown  font1" *ngIf="this.userHttpService.isUserLoggedIn()">
+            <li routerLinkActive="active"><a class="nav-link" *ngIf="this.userHttpService.isUserLoggedIn()" (click)="logout()"  routerLink="logout">Logout</a></li>
+            
+            <li class="nav-item dropdown  font1" *ngIf="this.userHttpService.isUserLoggedIn() && !this.userHttpService.isAdminLoggedIn() ">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" ><i class="fa fa-user" aria-hidden="true" ></i>
                     My Profile
@@ -54,7 +25,6 @@
                 <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item nav-link font1" routerLink="/userprofile">My Profile</a></li>
                     <li><a class="dropdown-item nav-link font1" routerLink="myorder">My Order</a></li>
-                    <li><a class="dropdown-item nav-link font1" (click)="logout()"  routerLink="logout">Logout</a></li>
                 </ul>
             </li>
 

@@ -1,4 +1,3 @@
-<p>user-profile works!</p>
 
 <div class="container emp-profile">
     <form method="post">
@@ -9,7 +8,7 @@
             <div class="col-md-6">
                 <div class="profile-head">
                     <h1>
-                        {{username}}
+                      Username:  {{username}}
 
                     </h1>
 
@@ -25,7 +24,6 @@
             <div class="col-md-2">
                 <input type="submit" class="profile-edit-btn" name="btnAddMore" 
                     value="Edit Profile" (click)="updateUser(user.id)" />
-                    <!-- (click)="updateUser(uid)" -->
             </div>
         </div>
         <div class="row">
@@ -37,7 +35,6 @@
             <div class="col-md-8">
                 <div class="tab-content profile-tab" id="myTabContent">
                     <div class="" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <!-- tab-pane fade show active -->
                         <div class="row">
                             <div class="col-md-6">
                                 <label>Name</label>
@@ -55,46 +52,7 @@
                                 <p>{{email}}</p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Phone</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>{{phonenumber}}</p>
-                            </div>
-                        </div>
-                        <!-- <div class="row">
-                            <div class="col-md-6">
-                                <label>Pan Number</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>{{panNumber}}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Adhar Number</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>{{adharNumber}}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Bank Account Number</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>{{bankAccountNumber}}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Bank IFSC Code</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>{{ifscCode}}</p>
-                            </div>
-                        </div> -->
+                      
                     </div>
                 </div>
             </div>
