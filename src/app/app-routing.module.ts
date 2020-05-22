@@ -16,6 +16,7 @@ import { OrderDetailFormComponent } from './orders/order-detail-form/order-detai
 import { MyOrderComponent } from './orders/my-order/my-order.component';
 import { OrderListComponent } from './orders/order-list/order-list.component';
 import { EditOrderComponent } from './orders/edit-order/edit-order.component';
+import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart.component';
 
 
 const routes: Routes = [
@@ -49,6 +50,9 @@ const routes: Routes = [
 
   { path: 'myorder', component: MyOrderComponent },
   { path: 'orderlist', component: OrderListComponent },
+
+  { path: 'linechart', component: DoughnutChartComponent, },
+
 
 ];
 

@@ -10,8 +10,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditProfileComponent implements OnInit {
   id: number;
-  user:User;
-  
+  user: User;
+  userPassword: User;
+  editPassword = false;
+  editUserDetail = true;
+
   constructor(private userHttpService: HttpservicesService,
     private route: ActivatedRoute,
     private router: Router) { }
@@ -22,7 +25,7 @@ export class EditProfileComponent implements OnInit {
     this.user = new User();
     this.getUserDetail(this.id)
   }
-  getUserDetail(id){
+  getUserDetail(id) {
     this.userHttpService.userDetailById(id).subscribe(
       data => this.user = data
     )
@@ -30,9 +33,25 @@ export class EditProfileComponent implements OnInit {
   updateData() {
     this.userHttpService.updateUser(this.id, this.user).subscribe(
       data => {
-        console.log(data) 
+        console.log(data);
+        this.router.navigate(['userprofile']);
       }
     )
+  }
+
+  updatePassword() {
+
+    this.userHttpService.updatePassword(this.id, this.user).subscribe(
+      data => {
+        console.log(data);
+        this.router.navigate(['userprofile'])
+
+      }
+    )
+  }
+
+  changePassword() {
+    this.editPassword = true;
   }
 
 }

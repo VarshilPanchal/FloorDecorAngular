@@ -32,6 +32,10 @@ export class HttpservicesService {
     return this.http.get<User[]>(`${USER_API}list`);
   }
 
+  public findAllUsernames(): Observable<String[]> {
+    return this.http.get<String[]>(`${USER_API}username`);
+  }
+
   public deleteUser(id) {
     return this.http.delete(`${USER_API}delete/${id}`)
   }
@@ -39,6 +43,11 @@ export class HttpservicesService {
   public updateUser(id: any, user: User) {
 
     return this.http.put<User>(`${USER_API}update/${id}`, user);
+  }
+
+  public updatePassword(id: any, user: User) {
+
+    return this.http.put<User>(`${USER_API}editpassword/${id}`, user);
   }
 
   public userDetailById(id: any) {
