@@ -11,6 +11,7 @@ import { HttpservicesService } from 'src/app/services/httpservices.service';
 })
 export class ProductDetailComponent implements OnInit {
   product: Product;
+  errorMassage;
 
 
   id: any;
@@ -31,7 +32,8 @@ export class ProductDetailComponent implements OnInit {
       response => {
         this.product = response;
         console.log(this.product);
-        // this.router.navigate[this.id];
+      },error => {
+        this.errorMassage = error.error
       }
     )
   }

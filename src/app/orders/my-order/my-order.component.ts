@@ -51,4 +51,8 @@ export class MyOrderComponent implements OnInit {
     this.getuserdetail();
   }
 
+  addNewOrder(){
+    this.router.navigate(['product/productlist'])
+  }
+
 }

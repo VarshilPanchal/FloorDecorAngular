@@ -13,6 +13,7 @@ export class NewProductComponent implements OnInit {
   productRegistration: FormGroup;
   submitted: boolean = false;
   product: Product;
+  errorMassage;
 
   constructor(private productHttpService: ProductHttpService,
     private formbuilder: FormBuilder,
@@ -58,6 +59,7 @@ export class NewProductComponent implements OnInit {
     }, error => {
       console.log(error)
       console.log(productRegistration);
+      this.errorMassage = error.error.error;
     })
 
     // } else {

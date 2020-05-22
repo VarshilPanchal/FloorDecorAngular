@@ -1,5 +1,7 @@
 
 <div class="container">
+    <button class="btn btn-success"  (click)="addNewOrder()">Add new  order</button>
+
     <div *ngFor="let user of userOrderDetail" >
         <div class="card">
             <div class="card-header">
@@ -39,8 +41,8 @@
                             <div class="col-12" *ngIf="user.rejectedOrder">Status :
                                 <b>order approved by Admin</b></div>
                   
-                                <button *ngIf="!user.approvedOrder" (click)="updateOrder(user.id)">edit order</button>
-                                <button *ngIf="!user.approvedOrder" (click)="deleteOrder(user.id)">delete order</button>
+                                <button class="btn btn-primary" *ngIf="!user.approvedOrder" (click)="updateOrder(user.id)">edit order</button>
+                                <button class="btn btn-warning" *ngIf="!user.approvedOrder" (click)="deleteOrder(user.id)">cancel order</button>
                 </div>
             </div>
         </div>

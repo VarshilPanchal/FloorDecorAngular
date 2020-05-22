@@ -17,6 +17,7 @@ import { MyOrderComponent } from './orders/my-order/my-order.component';
 import { OrderListComponent } from './orders/order-list/order-list.component';
 import { EditOrderComponent } from './orders/edit-order/edit-order.component';
 import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart.component';
+import { ErrorComponent } from './error/error.component';
 
 
 const routes: Routes = [
@@ -53,6 +54,7 @@ const routes: Routes = [
 
   { path: 'linechart', component: DoughnutChartComponent, },
 
+  { path: '**', component: ErrorComponent, },
 
 ];
 

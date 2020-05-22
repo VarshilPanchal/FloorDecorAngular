@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../Forms/model/User.model';
 import { OrderDetail } from '../forms/model/OrderDetail.model';
 import { Observable } from 'rxjs';
+import {  Chartss } from '../charts/doughnut-chart/chart.model';
 
 const ORDER_API = "http://localhost:8080/api/order/"
 
@@ -51,4 +52,10 @@ export class OrderDetailService {
     return this.http.delete(`${ORDER_API}delete/${id}`)
   }
 
+  public getChartDetail(): Observable<Array<Chartss>> {
+    return this.http.get<Array<Chartss>>(`${ORDER_API}charts`);
+  }
+  // getContractGatewaysList(): Observable<Array<ContractGatewaysList>> {
+  //   return this.http.get<Array<ContractGatewaysList>>(environment.api.urls.contracts.getContractGateways);
+  // }
 }

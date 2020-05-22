@@ -27,6 +27,7 @@ import { OrderListComponent } from './orders/order-list/order-list.component';
 import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { EditOrderComponent } from './orders/edit-order/edit-order.component';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { EditOrderComponent } from './orders/edit-order/edit-order.component';
     OrderListComponent,
     DoughnutChartComponent,
     EditOrderComponent,
+    ErrorComponent,
 
   ],
   imports: [
