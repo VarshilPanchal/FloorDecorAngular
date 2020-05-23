@@ -7,7 +7,7 @@ import { TokenStorageServiceService } from './token/token-storage-service.servic
 
 const AUTH_API = 'http://localhost:8080/api/auth/';
 
-const USER_API = 'http://localhost:8080/api/user/';
+const USER_API = 'http://localhost:8080/api/users';
 
 const API_URL = 'http://localhost:8080/api/test/';
 
@@ -29,35 +29,40 @@ export class HttpservicesService {
 
 
   public findAllUser(): Observable<User[]> {
-    return this.http.get<User[]>(`${USER_API}list`);
+    return this.http.get<User[]>(`${USER_API}`);
   }
 
   public findAllUsernames(): Observable<String[]> {
-    return this.http.get<String[]>(`${USER_API}username`);
+    return this.http.get<String[]>(`${USER_API}/username`);
   }
 
   public deleteUser(id) {
-    return this.http.delete(`${USER_API}delete/${id}`)
+    return this.http.delete(`${USER_API}/${id}`)
   }
 
   public updateUser(id: any, user: User) {
 
-    return this.http.put<User>(`${USER_API}update/${id}`, user);
+    return this.http.put<User>(`${USER_API}/${id}`, user);
   }
 
   public updatePassword(id: any, user: User) {
 
-    return this.http.put<User>(`${USER_API}editpassword/${id}`, user);
+    return this.http.put<User>(`${USER_API}/editpassword/${id}`, user);
   }
 
   public userDetailById(id: any) {
     // const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('auth-token')}` });
-    return this.http.get<User>(`${USER_API}single/${id}`);
+    return this.http.get<User>(`${USER_API}/${id}`);
   }
+
+  // public userProfileDetailById() {
+  // let id = sessionStorage.getItem('id');
+  // return id
+  // }
 
   getUserId() {
     let username = localStorage.getItem('Username');
-    return this.http.get(`${USER_API}${username}`);
+    return this.http.get(`${USER_API}/user/${username}`);
   }
 
   isUserLoggedIn() {
@@ -98,13 +103,14 @@ export class HttpservicesService {
   }
 
   public getActiveUser(): Observable<User[]> {
-    return this.http.get<User[]>(USER_API + 'active');
+    return this.http.get<User[]>(USER_API + '/active');
   }
 
   getInactiveUser(): Observable<User[]> {
-    return this.http.get<User[]>(USER_API + 'inactive');
+    return this.http.get<User[]>(USER_API + '/inactive');
   }
-  changeStatus(id, status) {
-    return this.http.get(`${USER_API}updatestatus/${id}/${status}`)
+  
+  public changeStatus(id, number) {
+    return this.http.put(`${USER_API}/${id}/${number}`,User);
   }
 }

@@ -48,7 +48,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   changeStatus(id, activeFlag) {
-    if (status) {
+    if (this.product.activeflag) {
       this.producthttpService.changeStatus(id, 1).subscribe(data => console.log(data));
     } else {
       this.producthttpService.changeStatus(id, 0).subscribe(data => console.log(data));

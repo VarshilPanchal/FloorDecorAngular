@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
-const  SERVICE_URL = "http://localhost:8080/api/product/";
+const  SERVICE_URL = "http://localhost:8080/api/products/";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class ProductHttpService {
     private router: Router) { }
 
   public findAllProduct(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${SERVICE_URL}list`);
+    return this.http.get<Product[]>(`${SERVICE_URL}`);
   }
 
   public findAllActiveProduct(): Observable<Product[]> {
@@ -33,19 +33,19 @@ export class ProductHttpService {
 
   registrationOfProduct(product: Product) {
 
-    return this.http.post<Product>(`${SERVICE_URL}save`, product);
+    return this.http.post<Product>(`${SERVICE_URL}`, product);
   }
 
   updateProduct(id, product) {
-    return this.http.put<Product>(`${SERVICE_URL}update/${id}`, product);
+    return this.http.put<Product>(`${SERVICE_URL}${id}`, product);
   }
 
   getName(id) {
     return this.http.get(`${SERVICE_URL}productname/${id}`);
   }
 
-  changeStatus(id, status) {
-    return this.http.get(`${SERVICE_URL}changestatus/${id}/${status}`)
+  changeStatus(id, number) {
+    return this.http.put(`${SERVICE_URL}${id}/${number}`,Product)
   }
 
 }
